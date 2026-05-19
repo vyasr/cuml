@@ -11,6 +11,8 @@ cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"/../
 
 rapids-logger "Configuring conda strict channel priority"
 conda config --set channel_priority strict
+source ./ci/use_conda_packages_from_prs.sh
+
 
 rapids-logger "Downloading artifacts from previous jobs"
 CPP_CHANNEL=$(rapids-download-conda-from-github cpp)

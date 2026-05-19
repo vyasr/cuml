@@ -1,5 +1,5 @@
 #!/bin/bash
-# SPDX-FileCopyrightText: Copyright (c) 2022-2025, NVIDIA CORPORATION.
+# SPDX-FileCopyrightText: Copyright (c) 2022-2026, NVIDIA CORPORATION.
 # SPDX-License-Identifier: Apache-2.0
 
 set -euo pipefail
@@ -17,6 +17,8 @@ sccache --stop-server 2>/dev/null || true
 
 RAPIDS_PACKAGE_VERSION=$(rapids-generate-version)
 export RAPIDS_PACKAGE_VERSION
+
+source ./ci/use_conda_packages_from_prs.sh
 
 # populates `RATTLER_CHANNELS` array and `RATTLER_ARGS` array
 source rapids-rattler-channel-string

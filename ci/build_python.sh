@@ -20,6 +20,8 @@ CPP_CHANNEL=$(rapids-download-conda-from-github cpp)
 RAPIDS_PACKAGE_VERSION=$(head -1 ./VERSION)
 export RAPIDS_PACKAGE_VERSION
 
+source ./ci/use_conda_packages_from_prs.sh
+
 # populates `RATTLER_CHANNELS` array and `RATTLER_ARGS` array
 source rapids-rattler-channel-string
 
