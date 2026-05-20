@@ -12,8 +12,8 @@
 # once those PRs are merged and the nightly picks them up.
 
 # Python packages (pylibraft, raft-dask, cuvs)
-PYRAFT_CHANNEL=$(rapids-get-pr-artifact raft 3019 python conda)
-PYCUVS_CHANNEL=$(rapids-get-pr-artifact cuvs 2101 python conda)
+PYRAFT_CHANNEL=$(rapids-get-pr-artifact raft 3019 python conda --stable)
+PYCUVS_CHANNEL=$(rapids-get-pr-artifact cuvs 2101 python conda --stable)
 
 # Ensure arrays exist for set -u shells
 RAPIDS_PREPENDED_CONDA_CHANNELS=("${RAPIDS_PREPENDED_CONDA_CHANNELS[@]:-}")
