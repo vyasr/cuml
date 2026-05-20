@@ -171,6 +171,8 @@ outputs:
         by_name:
           - cuda-cudart
           - cuda-version
+          - cuda-nvrtc
+          - libnvjitlink
           - libcublas
           - libcufft
           - libcurand
