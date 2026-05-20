@@ -11,14 +11,21 @@
 # Remove this file and all `source ./ci/use_conda_packages_from_prs.sh` calls
 # once those PRs are merged and the nightly picks them up.
 
+# C++ packages (libraft, libcuvs)
 LIBRAFT_CHANNEL=$(rapids-get-pr-artifact raft 3019 cpp conda)
 LIBCUVS_CHANNEL=$(rapids-get-pr-artifact cuvs 2101 cpp conda)
+
+# Python packages (pylibraft, raft-dask, cuvs)
+PYRAFT_CHANNEL=$(rapids-get-pr-artifact raft 3019 python conda)
+PYCUVS_CHANNEL=$(rapids-get-pr-artifact cuvs 2101 python conda)
 
 # For rattler builds: prepend to RAPIDS_PREPENDED_CONDA_CHANNELS so that
 # rapids-rattler-channel-string picks them up with strict channel priority.
 RAPIDS_PREPENDED_CONDA_CHANNELS=(
     "${LIBRAFT_CHANNEL}"
     "${LIBCUVS_CHANNEL}"
+    "${PYRAFT_CHANNEL}"
+    "${PYCUVS_CHANNEL}"
 )
 export RAPIDS_PREPENDED_CONDA_CHANNELS
 
@@ -28,6 +35,8 @@ export RAPIDS_PREPENDED_CONDA_CHANNELS
 PR_CONDA_PREPEND_CHANNEL_ARGS=(
     --prepend-channel "${LIBRAFT_CHANNEL}"
     --prepend-channel "${LIBCUVS_CHANNEL}"
+    --prepend-channel "${PYRAFT_CHANNEL}"
+    --prepend-channel "${PYCUVS_CHANNEL}"
 )
 
 # For mamba/conda installs: also prepend to the system-wide channel list
