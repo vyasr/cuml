@@ -13,7 +13,7 @@
 
 # C++ packages (libraft, libcuvs)
 LIBRAFT_CHANNEL=$(rapids-get-pr-artifact raft 3019 cpp conda)
-LIBCUVS_CHANNEL=$(rapids-get-pr-artifact cuvs 2101 cpp conda abcb6fb5243cee2203022758fbe366de3919febd)
+LIBCUVS_CHANNEL=$(rapids-get-pr-artifact cuvs 2101 cpp conda)
 
 # For rattler builds: prepend to RAPIDS_PREPENDED_CONDA_CHANNELS so that
 # rapids-rattler-channel-string picks them up with strict channel priority.
