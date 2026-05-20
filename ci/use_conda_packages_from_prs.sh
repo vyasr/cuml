@@ -22,7 +22,16 @@ RAPIDS_PREPENDED_CONDA_CHANNELS=(
 )
 export RAPIDS_PREPENDED_CONDA_CHANNELS
 
-# For mamba/conda installs: prepend to the system-wide channel list.
+# For rapids-dependency-file-generator: build an array of --prepend-channel
+# args so test/docs scripts can inject them before rapidsai-nightly.
+# shellcheck disable=SC2034  # used by scripts that source this file
+PR_CONDA_PREPEND_CHANNEL_ARGS=(
+    --prepend-channel "${LIBRAFT_CHANNEL}"
+    --prepend-channel "${LIBCUVS_CHANNEL}"
+)
+
+# For mamba/conda installs: also prepend to the system-wide channel list
+# as a fallback for scripts that don't use rapids-dependency-file-generator.
 for _channel in "${RAPIDS_PREPENDED_CONDA_CHANNELS[@]}"; do
     conda config --system --add channels "${_channel}"
 done

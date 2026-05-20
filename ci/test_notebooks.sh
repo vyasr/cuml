@@ -19,6 +19,7 @@ rapids-dependency-file-generator \
   --output conda \
   --file-key test_notebooks \
   --matrix "cuda=${RAPIDS_CUDA_VERSION%.*};arch=$(arch);py=${RAPIDS_PY_VERSION}" \
+  "${PR_CONDA_PREPEND_CHANNEL_ARGS[@]}" \
   --prepend-channel "${CPP_CHANNEL}" \
   --prepend-channel "${PYTHON_CHANNEL}" | tee env.yaml
 

@@ -20,6 +20,7 @@ rapids-dependency-file-generator \
   --output conda \
   --file-key "${DEPENDENCY_FILE_KEY:-test_python}" \
   --matrix "cuda=${RAPIDS_CUDA_VERSION%.*};arch=$(arch);py=${RAPIDS_PY_VERSION};dependencies=${RAPIDS_DEPENDENCIES}" \
+  "${PR_CONDA_PREPEND_CHANNEL_ARGS[@]}" \
   --prepend-channel "${CPP_CHANNEL}" \
   --prepend-channel "${PYTHON_CHANNEL}" | tee env.yaml
 
